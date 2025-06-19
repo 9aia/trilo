@@ -1,0 +1,11 @@
+### Restore a image
+
+POST {{baseUrl}}/photo/restore
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="image.jpeg"
+Content-Type: image/jpeg
+
+< ../files/image.jpeg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

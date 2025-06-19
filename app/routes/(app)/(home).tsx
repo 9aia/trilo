@@ -1,32 +1,19 @@
-import { Icon } from "@iconify-icon/solid";
+import Security from "~/components/Security";
 import UploadArea from "~/components/UploadArea";
 
-function Header() {
+function Header({ class: className }: { class?: string }) {
   return (
-    <header class="text-center sticky top-0 z-10">
+    <header class={`text-center sticky top-0 z-10 ${className} bg-white py-4`}>
       <h1 class="text-lg font-bold text-center text-orange-500">
         Trilo
       </h1>
-
-      <p class="text-2xl text-black mt-6">
-        Restaure suas memórias
-      </p>
     </header>
-  );
-}
-
-export function Security({ class: className }: { class?: string }) {
-  return (
-    <p class={`flex items-center justify-center gap-1 text-xs text-gray-400 mb-4 ${className}`}>
-      <Icon icon="material-symbols:lock-outline" class="text-lg text-warning" />
-      Suas fotos são processadas de forma segura e nunca são armazenadas em nossos servidores.
-    </p>
   );
 }
 
 function Footer() {
   return (
-    <footer class="top-[100vh] hidden sm:sticky">
+    <footer class="hidden sm:block top-[100vh] sticky">
       <Security />
     </footer>
   );
@@ -34,12 +21,18 @@ function Footer() {
 
 function Home() {
   return (
-    <div class="min-h-screen p-4 gap-y-4 flex flex-col font-noto">
-      <Header />
+    <div class="min-h-screen px-4 gap-y-4 flex flex-col font-noto bg-white">
+      <Header class="block sm:hidden" />
 
-      <main class="flex-1 flex flex-col items-center justify-end h-full max-w-4xl mx-auto">
+      <main class="py-4 flex-1 flex flex-col items-center justify-end h-full max-w-4xl mx-auto sm:justify-center">
+        <h1 class="hidden sm:block text-6xl font-bold text-center text-orange-500 mb-4">
+          Trilo
+        </h1>
+
         <UploadArea />
       </main>
+
+      <Footer />
     </div>
   );
 }

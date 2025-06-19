@@ -10,12 +10,13 @@
     "db:client": "castor"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.0",
+    "@google/genai": "^1.5.1",
     "@iconify-icon/solid": "^3.0.0",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
     "@tanstack/solid-query": "^5.69.0",
+    "@types/node": "^24.0.3",
     "class-variance-authority": "^0.7.1",
     "drizzle-orm": "^0.41.0",
     "solid-js": "^1.9.5",

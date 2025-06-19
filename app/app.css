@@ -238,6 +238,10 @@
   @apply rounded-3xl border-none shadow-none p-4 h-40 leading-[1.6em] resize-none;
 }
 
+@utility file-input {
+  @apply rounded-3xl border-none shadow-none;
+}
+
 @utility checkbox {
   @apply bg-transparent border-2 shadow-none;
 }
