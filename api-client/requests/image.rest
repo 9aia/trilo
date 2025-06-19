@@ -1,0 +1,6 @@
+### Restore a image
+
+POST {{baseUrl}}/image/restore
+Content-Type: multipart/form-data
+
+image=@./image.jpg

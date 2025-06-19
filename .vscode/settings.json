@@ -1,0 +1,108 @@
+{
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/node_modules": true,
+      "**/.wrangler": true,
+      "**/dist": true,
+      ".nuxt": true,
+      ".vscode": false
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+      "package.json": "bun.lock, .gitignore, tsconfig.json, *.d.ts, .release-it.json, eslint.config.*",
+      "docker-compose.yml": "wrangler.*, .env*, drizzle.config.*",
+      "README.md": "CONTRIBUTING.md, CODE_OF_CONDUCT*, SECURITY*, LICENSE*",
+    },
+    "editor.tabSize": 2,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    // Enable the ESlint flat config support
+    // Disable the default formatter, use eslint instead
+    "prettier.enable": false,
+    "editor.formatOnSave": false,
+    // Auto fix
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "never"
+    },
+    // Silent the stylistic rules in you IDE, but still auto fix them
+    "eslint.rules.customizations": [
+      {
+        "rule": "style/*",
+        "severity": "off"
+      },
+      {
+        "rule": "format/*",
+        "severity": "off"
+      },
+      {
+        "rule": "*-indent",
+        "severity": "off"
+      },
+      {
+        "rule": "*-spacing",
+        "severity": "off"
+      },
+      {
+        "rule": "*-spaces",
+        "severity": "off"
+      },
+      {
+        "rule": "*-order",
+        "severity": "off"
+      },
+      {
+        "rule": "*-dangle",
+        "severity": "off"
+      },
+      {
+        "rule": "*-newline",
+        "severity": "off"
+      },
+      {
+        "rule": "*quotes",
+        "severity": "off"
+      },
+      {
+        "rule": "*semi",
+        "severity": "off"
+      }
+    ],
+    // Enable eslint for all supported languages
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "html",
+      "markdown",
+      "json",
+      "jsonc",
+      "yaml",
+      "toml"
+    ],
+    "rest-client.environmentVariables": {
+      "dev": {
+        "baseUrl": "http://localhost:3000/api"
+      },
+    },
+    "rest-client.defaultHeaders": {
+      "User-Agent": "vscode-restclient",
+      "Accept-Encoding": "gzip",
+      "Origin": "http://localhost:3000"
+    },
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "tailwindCSS.classFunctions": ["cva", "cx"]
+  }
+  
