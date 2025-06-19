@@ -1,30 +1,31 @@
-import { Icon } from "@iconify-icon/solid";
-import { CreateMutationResult } from "@tanstack/solid-query";
-import { Setter } from "solid-js";
+import type { CreateMutationResult } from '@tanstack/solid-query'
+import type { Setter } from 'solid-js'
+import { Icon } from '@iconify-icon/solid'
 
 function ResultsSection(props: {
-  file: File;
-  restoredImageUrl: string;
-  setFile: Setter<File | null>;
-  setRestoredImageUrl: Setter<string | null>;
-  restoreMutation: CreateMutationResult<string, Error, FormData, unknown>;
+  file: File
+  restoredImageUrl: string
+  setFile: Setter<File | null>
+  setRestoredImageUrl: Setter<string | null>
+  restoreMutation: CreateMutationResult<string, Error, FormData, unknown>
 }) {
   const downloadImage = () => {
-    if (!props.restoredImageUrl) return;
+    if (!props.restoredImageUrl)
+      return
 
-    const link = document.createElement('a');
-    link.href = props.restoredImageUrl;
-    link.download = `restored_${props.file?.name || 'photo'}.jpg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+    const link = document.createElement('a')
+    link.href = props.restoredImageUrl
+    link.download = `restored_${props.file?.name || 'photo'}.jpg`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   const resetFile = () => {
-    props.setFile(null);
-    props.setRestoredImageUrl(null);
-    props.restoreMutation.reset();
-  };
+    props.setFile(null)
+    props.setRestoredImageUrl(null)
+    props.restoreMutation.reset()
+  }
 
   return (
     <section class="w-full">
@@ -58,7 +59,7 @@ function ResultsSection(props: {
         </button>
       </div>
     </section>
-  );
+  )
 }
 
-export default ResultsSection;
+export default ResultsSection

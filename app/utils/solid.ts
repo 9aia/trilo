@@ -1,5 +1,5 @@
-import type { APIEvent } from "@solidjs/start/server";
-import type { SafeParseReturnType, ZodSchema } from 'zod';
+import type { APIEvent } from '@solidjs/start/server'
+import type { SafeParseReturnType, ZodSchema } from 'zod'
 
 export async function getValidated<O>(
   event: APIEvent,
@@ -53,13 +53,13 @@ export function internal(message = 'Internal Server Error', error?: unknown) {
   if (error) {
     return {
       data: null,
-      error: new Response(message + " " + error, { status: 500 })
+      error: new Response(`${message} ${error}`, { status: 500 }),
     }
   }
 
   return {
     data: null,
-    error: new Response(message, { status: 500 })
+    error: new Response(message, { status: 500 }),
   }
 }
 
@@ -67,20 +67,20 @@ export function badRequest<I, O>(result?: SafeParseReturnType<I, O>) {
   if (!result) {
     return {
       data: null,
-      error: new Response("Bad Request", { status: 400 })
+      error: new Response('Bad Request', { status: 400 }),
     }
   }
 
   return {
     data: null,
-    error: new Response(JSON.stringify(result.error), { status: 400 })
+    error: new Response(JSON.stringify(result.error), { status: 400 }),
   }
 }
 
 export function success<T>(data: T) {
   return {
     data,
-    error: null
+    error: null,
   }
 }
 
@@ -90,7 +90,7 @@ export function validated<O>(
 ) {
   let dataToZod: unknown = data
 
-  if(data instanceof FormData) {
+  if (data instanceof FormData) {
     dataToZod = Object.fromEntries(data.entries())
   }
 
@@ -105,34 +105,34 @@ export function validated<O>(
 export class InternalError extends Error {
   constructor(message?: string) {
     super(message)
-    this.name = "InternalError"
+    this.name = 'InternalError'
   }
 }
 
 export class BadRequestError extends Error {
   constructor(message?: string) {
     super(message)
-    this.name = "BadRequestError"
+    this.name = 'BadRequestError'
   }
 }
 
 export class NotFoundError extends BadRequestError {
   constructor(message?: string) {
     super(message)
-    this.name = "NotFoundError"
+    this.name = 'NotFoundError'
   }
 }
 
 export class UnauthorizedError extends BadRequestError {
   constructor(message?: string) {
     super(message)
-    this.name = "UnauthorizedError"
+    this.name = 'UnauthorizedError'
   }
 }
 
 export class ForbiddenError extends BadRequestError {
   constructor(message?: string) {
     super(message)
-    this.name = "ForbiddenError"
+    this.name = 'ForbiddenError'
   }
 }

@@ -1,55 +1,55 @@
-import { Icon } from "@iconify-icon/solid";
-import { createMutation } from "@tanstack/solid-query";
-import { createSignal, Show } from "solid-js";
-import ResultsSection from "./ResultsSection";
-import Security from "./Security";
+import { Icon } from '@iconify-icon/solid'
+import { createMutation } from '@tanstack/solid-query'
+import { createSignal, Show } from 'solid-js'
+import ResultsSection from './ResultsSection'
+import Security from './Security'
 
 function UploadArea() {
-  const [file, setFile] = createSignal<File | null>(null);
-  const [restoredImageUrl, setRestoredImageUrl] = createSignal<string | null>(null);
-
-  const handleFileChange = (event: Event) => {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      console.log("Restoring photo...");
-      
-      setFile(file);
-      // Reset restored image when new file is selected
-      setRestoredImageUrl(null);
-
-      const formData = new FormData();
-      formData.append("photo", file);
-      restoreMutation.mutate(formData);
-    }
-  };
+  const [file, setFile] = createSignal<File | null>(null)
+  const [restoredImageUrl, setRestoredImageUrl] = createSignal<string | null>(null)
 
   const restorePhoto = async (formData: FormData) => {
-    const response = await fetch("/api/photo/restore", {
-      method: "POST",
-      body: formData
-    });
+    const response = await fetch('/api/photo/restore', {
+      method: 'POST',
+      body: formData,
+    })
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ error: "Failed to restore photo" })) as { error?: string };
-      throw new Error(errorData.error || "Failed to restore photo");
+      const errorData = await response.json().catch(() => ({ error: 'Failed to restore photo' })) as { error?: string }
+      throw new Error(errorData.error || 'Failed to restore photo')
     }
 
     // Get the image blob from the response
-    const blob = await response.blob();
-    const imageUrl = URL.createObjectURL(blob);
-    return imageUrl;
+    const blob = await response.blob()
+    const imageUrl = URL.createObjectURL(blob)
+    return imageUrl
   }
 
   const restoreMutation = createMutation(() => ({
-    mutationKey: ["restore-photo"],
+    mutationKey: ['restore-photo'],
     mutationFn: restorePhoto,
     onSuccess: (imageUrl) => {
-      setRestoredImageUrl(imageUrl);
+      setRestoredImageUrl(imageUrl)
     },
     onError: (error) => {
-      console.error("Error restoring photo:", error);
+      console.error('Error restoring photo:', error)
+    },
+  }))
+
+  const handleFileChange = (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0]
+    if (file) {
+      console.log('Restoring photo...')
+
+      setFile(file)
+      // Reset restored image when new file is selected
+      setRestoredImageUrl(null)
+
+      const formData = new FormData()
+      formData.append('photo', file)
+      restoreMutation.mutate(formData)
     }
-  }));
+  }
 
   return (
     <div class="w-full flex flex-col items-center justify-end sm:justify-center h-full">
@@ -78,12 +78,17 @@ function UploadArea() {
             </label>
           </Show>
 
-          <Show when={restoreMutation.isPending} fallback={<label class="label invisible" aria-hidden>
-            <Icon icon="material-symbols:restore-page-outline-rounded" class="text-2xl" />
-            A
-          </label>}>
+          <Show
+            when={restoreMutation.isPending}
+            fallback={(
+              <label class="label invisible" aria-hidden>
+                <Icon icon="material-symbols:restore-page-outline-rounded" class="text-2xl" />
+                A
+              </label>
+            )}
+          >
             <label class="label">
-              <span class="loading loading-spinner loading-xs"></span>
+              <span class="loading loading-spinner loading-xs" />
               Restaurando...
             </label>
           </Show>
@@ -101,7 +106,7 @@ function UploadArea() {
         />
       </Show>
     </div>
-  );
+  )
 }
 
-export default UploadArea;
+export default UploadArea

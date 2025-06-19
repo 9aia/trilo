@@ -1,9 +1,9 @@
 name = "cyanea"
 main = "app/index.ts"
 compatibility_date = "2022-11-07"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = [ "nodejs_compat" ]
 
-[[ d1_databases ]]
+[[d1_databases]]
 binding = "DB"
 database_name = "cyanea"
 database_id = "d5fba440-39b4-42ef-bc94-fd11edb1c131"

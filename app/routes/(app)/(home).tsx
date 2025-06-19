@@ -1,14 +1,14 @@
-import Security from "~/components/Security";
-import UploadArea from "~/components/UploadArea";
+import Security from '~/components/Security'
+import UploadArea from '~/components/UploadArea'
 
-function Header({ class: className }: { class?: string }) {
+function Header(props: { class?: string }) {
   return (
-    <header class={`text-center sticky top-0 z-10 ${className} bg-white py-4`}>
+    <header class={`text-center sticky top-0 z-10 ${props.class} bg-white py-4`}>
       <h1 class="text-lg font-bold text-center text-orange-500">
         Trilo
       </h1>
     </header>
-  );
+  )
 }
 
 function Footer() {
@@ -16,7 +16,7 @@ function Footer() {
     <footer class="hidden sm:block top-[100vh] sticky">
       <Security />
     </footer>
-  );
+  )
 }
 
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
 
       <Footer />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
